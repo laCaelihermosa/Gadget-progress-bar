@@ -1,0 +1,185 @@
+:root {
+    --bg-gradient-1: rgb(112, 169, 254);
+    --bg-gradient-2: rgb(255, 179, 179);
+    --f-family: 'consolas';
+} 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(
+        var(--bg-gradient-1)20%,
+        var(--bg-gradient-2)80%
+    );
+    height: 100vh; 
+    font-family: var(--f-family);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    font: 700 4em var(--f-family);   
+    background-image: linear-gradient(120deg, #f7ff59 30%,  #ff6600);
+    -webkit-background-clip: text;
+    color: transparent;
+    position: absolute;
+    margin-top: -880px;
+}
+
+.sun {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(
+        closest-corner circle at 15% 15%,
+        rgba(196, 201, 25, 0.949),
+        rgb(242, 255, 2) 20%,
+        rgb(230, 219, 12) 21%,
+        #bbc250 100%
+    );
+    position: absolute; 
+    margin-top: -900px;          
+    filter: blur(0.5em);
+    z-index: -1;
+}
+
+.bar-one {
+    position: absolute;
+    width: 500px;
+    height: 15px;
+    background: #fff;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+}
+
+.bar-one::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094, #0000ff, #ffff00, #fb0094);
+    animation: animate 20s linear infinite;
+    background-size: 500%;
+
+}
+.bar-one::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094, #0000ff, #ffff00, #fb0094);
+    animation: animate 20s linear infinite;
+    background-size: 500%;
+    filter: blur(10px);
+}
+
+@keyframes animate {
+    0% {background-position: 0 0;}
+    0% {background-position: 500% 0;}
+}
+
+/*second bar*/
+.second-bar {
+    width: 100%;
+    height: 300px;
+    background-color: black;
+    position: relative;
+    margin-top: 600px;
+}
+
+.container {
+    position: relative;
+    width: 500px;
+    margin: 115px auto;
+}
+
+.container .loading {
+    position: relative;    
+    display: flex;
+    background: linear-gradient(#646464 0%, #333 10%, #222);
+    border: 2px solid;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+}
+
+.container .loading::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: rgba(250, 250, 250, 0.1);
+    z-index: 10;
+    pointer-events: none;
+}   
+
+.container .loading::after {
+    content: "";
+    position: absolute;
+    top: 27px;
+    right: 20px;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: #22e4e3;
+    box-shadow: 0 0 5px #22e4e3,
+                0 0 10px #22e4e3,
+                0 0 40px #22e4e3;  
+    animation: animateLight 1s linear infinite;
+}
+
+@keyframes animateLight {
+    0%, 49.99% {
+        background: #22e4e3;
+        box-shadow: 0 0 5px #22e4e3,
+                    0 0 10px #22e4e3,
+                    0 0 40px #22e4e3;  
+    }
+
+    50%, 100% {
+        background: #111;
+        box-shadow: none;
+    }
+
+}
+
+.container .loading .text {
+    position: relative;
+    width: 80px;
+    color: #fff;
+    text-align: right;
+    letter-spacing: 1px;    
+}
+
+.container .loading .percent {
+    position: relative;
+    top: 2px;
+    width: calc(100% - 120px);
+    height: 20px;
+    background: #151515;
+    border-radius: 20px;
+    margin: 0 10px;
+    box-shadow: inset 0 0 10px #000;
+    overflow: hidden;
+}
+
+.container .loading .percent .progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #22ffde, #2196f3);
+    animation: animate-two 6s ease-in-out infinite;
+}
+
+@keyframes animate-two {
+    0% {width: 0; left: 0;}
+    50% {width: 100%; left: 0;}
+    100% {width: 100%; left: 100%;}
+}
